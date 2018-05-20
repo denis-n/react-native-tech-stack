@@ -4,16 +4,17 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./src/reducers";
 import { Header } from "./src/components/common";
+import LibraryList from "./src/components/LibraryList";
+
+const store = createStore(reducers);
 
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <View>
           <Header headerText="Tech Stack" />
-          <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
-          </View>
+          <LibraryList />
         </View>
       </Provider>
     );
