@@ -12,7 +12,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View>
+        <View style={styles.container}>
           <Header headerText="Tech Stack" />
           <LibraryList />
         </View>
@@ -23,7 +23,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1
     // backgroundColor: "#fff",
     // alignItems: "center",
     // justifyContent: "center"
