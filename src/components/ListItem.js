@@ -10,6 +10,14 @@ class ListItem extends Component {
     this.props.selectLibrary(libraryId);
   };
 
+  renderDescription = () => {
+    const { id, title, description } = this.props.item;
+
+    if (id === this.props.selectedLibraryId) {
+      return <Text>{description}</Text>;
+    }
+  };
+
   render() {
     const { id, title, description } = this.props.item;
 
@@ -19,6 +27,7 @@ class ListItem extends Component {
           <CardSection>
             <Text style={styles.titleStyle}>{title}</Text>
           </CardSection>
+          {this.renderDescription()}
         </View>
       </TouchableWithoutFeedback>
     );
@@ -32,4 +41,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, actions)(ListItem);
+const mapStateToProps = state => {
+  return {
+    selectedLibraryId: state.selectedLibraryId
+  };
+};
+
+export default connect(mapStateToProps, actions)(ListItem);
