@@ -11,10 +11,10 @@ class ListItem extends Component {
   };
 
   renderDescription = () => {
-    const { id, title, description } = this.props.item;
+    const { item, expanded } = this.props;
 
-    if (id === this.props.selectedLibraryId) {
-      return <Text>{description}</Text>;
+    if (expanded) {
+      return <Text>{item.description}</Text>;
     }
   };
 
@@ -41,9 +41,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const expanded = ownProps.item.id === state.selectedLibraryId;
+
   return {
-    selectedLibraryId: state.selectedLibraryId
+    expanded
   };
 };
 
